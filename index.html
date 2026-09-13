@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>M. Kathiravan — Portfolio</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Syne:wght@400;600;700;800&display=swap"
+    rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursor-follower"></div>
+  <div class="progress-bar" id="progress-bar" style="width:0"></div>
+  <canvas id="bg-canvas"></canvas>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">MK.</a>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#certifications">Certs</a></li>
+      <li><a href="#internship-certificates">Internships</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="resume/originalresumekathir.pdf" class="resume-link" download><i class="fas fa-download"></i> Resume</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-tag"><span>Available for Internship &amp; Placement</span></div>
+      <h1 class="hero-name">
+        <span class="first">M. Kathiravan</span>
+        <span class="last">Dev.</span>
+      </h1>
+      <p class="hero-title" id="hero-typed"></p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary"><i class="fas fa-rocket"></i> View Projects</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+      <div class="hero-meaning">
+        <div class="hero-meaning-label">Hero concept</div>
+        <p>
+          I built this simple personal hero section around a 3D character I modeled in Blender,
+          then brought it to life in Spline as a live animation with chunky geometric shapes
+          flying around me.
+        </p>
+      </div>
+    </div>
+
+    <!-- AI TALKING AVATAR WIDGET -->
+    <div class="avatar-widget" id="avatar-widget">
+      <div class="avatar-frame">
+        <div class="avatar-img-wrap" id="av-face">
+          <img src="kathiravan.png" alt="Kathiravan Avatar" class="avatar-photo" id="avatar-photo" />
+          <!-- Holographic overlay -->
+          <div class="avatar-holo-overlay"></div>
+          <!-- Scan line -->
+          <div class="avatar-scanline"></div>
+          <!-- Corner brackets -->
+          <div class="av-corner av-tl"></div>
+          <div class="av-corner av-tr"></div>
+          <div class="av-corner av-bl"></div>
+          <div class="av-corner av-br"></div>
+        </div>
+        <!-- Orbit rings -->
+        <div class="av-orbit av-orbit-1"></div>
+        <div class="av-orbit av-orbit-2"></div>
+        <!-- Floating particles -->
+        <div class="av-particle" style="--px:20%;--py:15%;--ps:6px;--pd:0s"></div>
+        <div class="av-particle" style="--px:80%;--py:20%;--ps:4px;--pd:.5s"></div>
+        <div class="av-particle" style="--px:10%;--py:70%;--ps:5px;--pd:1s"></div>
+        <div class="av-particle" style="--px:88%;--py:65%;--ps:4px;--pd:1.5s"></div>
+        <div class="av-particle" style="--px:50%;--py:5%;--ps:5px;--pd:.8s"></div>
+        <div class="avatar-ring" id="av-ring"></div>
+        <div class="avatar-status" id="av-status"></div>
+      </div>
+
+      <!-- Speech bubble -->
+      <div class="speech-bubble" id="speech-bubble">
+        <button class="assistant-close" id="assistant-close" aria-label="Close assistant" title="Close assistant">×</button>
+        <div class="bubble-label" id="bubble-label">MK says</div>
+        <div class="bubble-text" id="bubble-text">Hi! I'm Kathiravan. Ask me anything about myself — use the mic or type
+          below! 👋</div>
+      </div>
+
+      <!-- Controls -->
+      <div class="avatar-controls">
+        <button class="mic-btn" id="mic-btn" title="Hold to speak" aria-label="Start voice input">
+          <i class="fas fa-microphone" id="mic-icon"></i>
+        </button>
+        <button class="assist-btn" id="mute-btn" aria-label="Mute voice" title="Mute voice">
+          <i class="fas fa-volume-up" id="mute-icon"></i>
+        </button>
+        <button class="assist-btn" id="stop-btn" aria-label="Stop speaking" title="Stop speaking">
+          <i class="fas fa-stop"></i>
+        </button>
+        <div class="text-input-wrap">
+          <input type="text" id="ask-input" placeholder="Ask me anything…" autocomplete="off" aria-label="Ask Kathiravan AI a question" />
+        </div>
+        <button class="send-btn" id="send-btn" aria-label="Send question"><i class="fas fa-paper-plane"></i></button>
+      </div>
+
+      <!-- Quick questions -->
+      <div class="quick-qs">
+        <div class="quick-q" onclick="askQuestion('Who is Kathiravan?')">Who is Kathiravan?</div>
+        <div class="quick-q" onclick="askQuestion('What are his skills?')">Skills?</div>
+        <div class="quick-q" onclick="askQuestion('Tell me about his projects')">Projects?</div>
+        <div class="quick-q" onclick="askQuestion('Is he open to opportunities?')">Goals?</div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <span>scroll</span>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="section-wrap">
+      <div class="section-header" id="about-header">
+        <div class="section-tag">about me</div>
+        <h2 class="section-title">Who I <span>Am</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="about-grid">
+        <!-- Small avatar side -->
+        <div class="about-avatar-side" id="about-av-side"
+          style="opacity:0;transform:translateX(-20px);transition:all .8s">
+          <div class="about-avatar-frame" id="about-av-face">
+            <div class="about-avatar-img-wrap">
+              <img src="avatar.png" alt="Kathiravan" class="about-avatar-photo" />
+              <div class="about-av-glow"></div>
+              <div class="about-av-corner about-av-tl"></div>
+              <div class="about-av-corner about-av-tr"></div>
+              <div class="about-av-corner about-av-bl"></div>
+              <div class="about-av-corner about-av-br"></div>
+            </div>
+          </div>
+          <div class="about-speech" id="about-speech">I'm Kathiravan! Scroll to learn more about me 😊</div>
+        </div>
+
+        <div class="about-text" id="about-txt" style="opacity:0;transform:translateY(20px);transition:all .8s .2s">
+          <p>I’m a <strong>Software Developer</strong> passionate about building modern, responsive, and intelligent
+            digital experiences. I enjoy turning ideas into practical applications by combining <strong>clean frontend
+              development, backend technologies, and AI-driven solutions</strong>.</p>
+          <p>I’m a self-driven developer who continuously explores new technologies, frameworks, and development
+            practices. I enjoy solving problems, experimenting with new ideas, and building projects that are both
+            <strong>useful and user-focused</strong>.</p>
+          <p>My interests span <strong>Web Development, Artificial Intelligence, Machine Learning, and Full-Stack
+              Development</strong>. I’m always looking for opportunities to transform real-world problems into simple,
+            scalable, and innovative software solutions.</p>
+          <p>🚀 <strong>Currently seeking Software Developer, Full-Stack Developer, AI/ML, Internship, and Graduate
+              opportunities.</strong></p>
+          <p>📍 <strong>Ariyalur, Tamil Nadu, India</strong></p>
+          <div class="achievement-banner">
+            <div
+              style="font-size:2.2rem;animation:float 3s ease-in-out infinite;filter:drop-shadow(0 0 12px rgba(255,200,0,.5))">
+              🏆</div>
+            <div>
+              <div
+                style="font-size:.7rem;color:var(--muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:4px">
+                Achievement</div>
+              <div style="font-weight:700;font-size:1rem">Runner-up — Inter-School Chess Competition</div>
+              <div style="font-size:.85rem;color:var(--muted);margin-top:4px">Strategic thinking applied beyond code
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="section-wrap">
+      <div class="section-header" id="skills-header">
+        <div class="section-tag">skills</div>
+        <h2 class="section-title">My <span>Toolkit</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill-card" id="sc1">
+          <div class="skill-icon" style="background:rgba(0,212,255,.1)"><i class="fas fa-code"
+              style="color:var(--accent)"></i></div>
+          <h3>Programming Languages</h3>
+          <div class="tags"><span class="tag">C</span><span class="tag">Java</span><span class="tag">C++</span><span
+              class="tag">Python</span></div>
+        </div>
+        <div class="skill-card" id="sc2" style="transition-delay:.1s">
+          <div class="skill-icon" style="background:rgba(124,58,237,.1)"><i class="fas fa-globe"
+              style="color:var(--accent2)"></i></div>
+          <h3>Front-End Development</h3>
+          <div class="tags"><span class="tag">HTML</span><span class="tag">CSS</span><span
+              class="tag">JavaScript</span><span class="tag">Tailwind CSS</span><span class="tag">Next.js</span></div>
+        </div>
+        <div class="skill-card" id="sc3" style="transition-delay:.2s">
+          <div class="skill-icon" style="background:rgba(16,185,129,.1)"><i class="fas fa-server"
+              style="color:var(--accent3)"></i></div>
+          <h3>Backend &amp; Databases</h3>
+          <div class="tags"><span class="tag">Node.js</span><span class="tag">MongoDB</span><span
+              class="tag">MySQL</span></div>
+        </div>
+        <div class="skill-card" id="sc4" style="transition-delay:.3s">
+          <div class="skill-icon" style="background:rgba(0,212,255,.1)"><i class="fas fa-brain"
+              style="color:var(--accent)"></i></div>
+          <h3>CS Fundamentals</h3>
+          <div class="tags"><span class="tag">Data Structures</span><span class="tag">Algorithms</span><span
+              class="tag">OOP</span><span class="tag">OS</span></div>
+        </div>
+        <div class="skill-card" id="sc5" style="transition-delay:.4s">
+          <div class="skill-icon" style="background:rgba(124,58,237,.1)"><i class="fab fa-git-alt"
+              style="color:var(--accent2)"></i></div>
+          <h3>Tools &amp; Version Control</h3>
+          <div class="tags"><span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">VS Code</span><span class="tag">Vibe Coding</span><span class="tag">Prompt Engineering</span>
+          </div>
+        </div>
+        <div class="skill-card" id="sc6" style="transition-delay:.5s">
+          <div class="skill-icon" style="background:rgba(16,185,129,.1)"><i class="fas fa-lightbulb"
+              style="color:var(--accent3)"></i></div>
+          <h3>Soft Skills</h3>
+          <div class="tags"><span class="tag">Problem Solving</span><span class="tag">Self-Learning</span><span
+              class="tag">Teamwork</span><span class="tag">Adaptability</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-wrap">
+      <div class="section-header" id="proj-header">
+        <div class="section-tag">projects</div>
+        <h2 class="section-title">Projects I've <span>Built</span></h2>
+        <div class="divider"></div>
+      </div>
+
+      <div class="project-carousel-wrap">
+        <div class="project-nav">
+          <div class="project-hint">← Drag or use arrows →</div>
+          <div style="display:flex;align-items:center;gap:1rem">
+            <div class="project-arrow" data-dir="-1" aria-label="Previous project"><i class="fas fa-chevron-left"></i></div>
+            <div class="project-arrow" data-dir="1" aria-label="Next project"><i class="fas fa-chevron-right"></i></div>
+          </div>
+        </div>
+
+        <div class="project-scroll-track" id="project-track">
+          <div class="project-card" id="proj1">
+            <div class="project-banner">
+              <div class="project-banner-icon">🎙️</div>
+            </div>
+            <div class="project-body">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.75rem;flex-wrap:wrap">
+                <span style="background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);color:var(--accent);padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;font-family:'Space Mono',monospace">AI / ML</span>
+                <span style="background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);color:var(--accent2);padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;font-family:'Space Mono',monospace">Chrome Extension</span>
+              </div>
+              <h3>AI Smart Meeting Companion</h3>
+              <p>An AI-powered Chrome extension that transforms online meetings into intelligent, interactive learning experiences by capturing meeting conversations, generating real-time transcripts, summarizing discussions, and extracting action items automatically.</p>
+              <ul class="feature-list">
+                <li>Captures and processes meeting conversations in real time</li>
+                <li>Transforms speech into accurate transcripts and summaries</li>
+                <li>Extracts key action items and decisions automatically</li>
+                <li>Generates interactive quizzes from meeting content</li>
+              </ul>
+              <div class="tags"><span class="tag">Python</span><span class="tag">JavaScript</span><span class="tag">React</span><span class="tag">Whisper</span><span class="tag">OpenAI</span><span class="tag">Gemini</span></div>
+            </div>
+          </div>
+
+          <div class="project-card" id="proj2">
+            <div class="project-banner" style="background:linear-gradient(135deg,rgba(16,185,129,.12),rgba(0,212,255,.10));">
+              <div class="project-banner-icon">🚒</div>
+            </div>
+            <div class="project-body">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.75rem;flex-wrap:wrap">
+                <span style="background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.3);color:var(--accent3);padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;font-family:'Space Mono',monospace">IoT</span>
+                <span style="background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);color:var(--accent);padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;font-family:'Space Mono',monospace">Robotics</span>
+              </div>
+              <h3>Fire Fighting Robot</h3>
+              <p>An autonomous IoT-based robotic system designed to detect fire, navigate toward it, and activate a water-spraying mechanism to help suppress flames with minimal human intervention.</p>
+              <ul class="feature-list">
+                <li>Detects fire using flame and heat sensors</li>
+                <li>Moves automatically toward the fire source</li>
+                <li>Uses obstacle detection for safer navigation</li>
+                <li>Activates a water-spraying mechanism for suppression</li>
+              </ul>
+              <div class="tags"><span class="tag">Arduino</span><span class="tag">IoT</span><span class="tag">Sensors</span><span class="tag">Robotics</span></div>
+            </div>
+          </div>
+
+          <div class="project-card" id="proj3">
+            <div class="project-banner" style="background:linear-gradient(135deg,rgba(124,58,237,.12),rgba(0,212,255,.08));">
+              <div class="project-banner-icon">🤖</div>
+            </div>
+            <div class="project-body">
+              <div style="display:flex;align-items:center;gap:10px;margin-bottom:.75rem;flex-wrap:wrap">
+                <span style="background:rgba(124,58,237,.1);border:1px solid rgba(124,58,237,.2);color:var(--accent2);padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;font-family:'Space Mono',monospace">AI / ML</span>
+                <span style="background:rgba(0,212,255,.1);border:1px solid rgba(0,212,255,.2);color:var(--accent);padding:3px 10px;border-radius:20px;font-size:.7rem;font-weight:700;font-family:'Space Mono',monospace">Automation</span>
+              </div>
+              <h3>Smart Workflow Assistant</h3>
+              <p>An intelligent workflow automation system built to interpret user tasks, streamline repetitive processes, and provide contextual assistance using AI-driven decision support.</p>
+              <ul class="feature-list">
+                <li>Automates repetitive digital workflows</li>
+                <li>Uses AI for task interpretation and prioritization</li>
+                <li>Improves productivity with contextual assistance</li>
+                <li>Supports responsive, user-friendly interactions</li>
+              </ul>
+              <div class="tags"><span class="tag">Python</span><span class="tag">AI</span><span class="tag">Automation</span><span class="tag">UX</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="project-dots" aria-label="Project navigation dots">
+          <div class="project-dot active"></div>
+          <div class="project-dot"></div>
+          <div class="project-dot"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EDUCATION -->
+  <section id="education">
+    <div class="section-wrap">
+      <div class="section-header" id="edu-header">
+        <div class="section-tag">education</div>
+        <h2 class="section-title">Academic <span>Journey</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item" id="t1">
+          <div class="timeline-dot"></div>
+          <div class="timeline-year">2023 — 2027</div>
+          <div class="timeline-card">
+            <h3>B.E. Computer Science &amp; Engineering</h3>
+            <div class="school">Mahendra Engineering College, Namakkal</div>
+            <div class="score-badge"><i class="fas fa-chart-line"></i> CGPA: 7.85+</div>
+            <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:6px"><span class="tag">Web Dev</span><span
+                class="tag">Data Structures</span><span class="tag">Projects</span><span class="tag">Placement
+                Prep</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" id="t2" style="transition-delay:.15s">
+          <div class="timeline-dot" style="background:var(--accent2);box-shadow:0 0 15px rgba(124,58,237,.6)"></div>
+          <div class="timeline-year">2022 — 2023</div>
+          <div class="timeline-card">
+            <h3>Higher Secondary — Class 12 (HSC)</h3>
+            <div class="school">Govt. Higher Secondary School, Keelapalur</div>
+            <div class="score-badge"><i class="fas fa-star"></i> 85.5%</div>
+            <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:6px"><span class="tag">Physics</span><span
+                class="tag">Chemistry</span><span class="tag">Mathematics</span><span class="tag">Tamil</span></div>
+          </div>
+        </div>
+        <div class="timeline-item" id="t3" style="transition-delay:.3s">
+          <div class="timeline-dot" style="background:var(--accent3);box-shadow:0 0 15px rgba(16,185,129,.6)"></div>
+          <div class="timeline-year">2020 — 2021</div>
+          <div class="timeline-card">
+            <h3>Secondary School — Class 10 (SSLC)</h3>
+            <div class="school">Govt. Higher Secondary School, Keelapalur</div>
+            <div class="score-badge"
+              style="background:rgba(16,185,129,.1);border-color:rgba(16,185,129,.3);color:var(--accent3)"><i
+                class="fas fa-trophy"></i> 95%</div>
+            <div style="margin-top:1rem;display:flex;flex-wrap:wrap;gap:6px"><span class="tag">Tamil</span><span
+                class="tag">Maths</span><span class="tag">Science</span><span class="tag">Social Science</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS -->
+  <section id="certifications">
+    <div class="section-wrap" style="padding-bottom:2rem">
+      <div class="section-header" id="cert-header">
+        <div class="section-tag">certifications</div>
+        <h2 class="section-title">Credentials &amp; <span>Learning</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:1.25rem">
+        <div class="cert-hint">← Drag or use arrows →</div>
+        <div class="cert-nav">
+          <div class="cert-arrow" onclick="scrollCert(-1)"><i class="fas fa-chevron-left"></i></div>
+          <div class="cert-arrow" onclick="scrollCert(1)"><i class="fas fa-chevron-right"></i></div>
+        </div>
+      </div>
+      <div class="cert-scroll-track" id="cert-track">
+        <div class="cert-card" data-cert-title="Introduction to Artificial Intelligence" data-cert-image="certificates/cert-ai.png">
+          <div class="cert-num c1">01</div>
+          <div class="cert-icon-big">🤖</div>
+          <div class="cert-type">Artificial Intelligence</div>
+          <h3>Introduction to Artificial Intelligence</h3><br><span class="cert-status"><i
+              class="fas fa-check-circle"></i> Certified</span>
+        </div>
+        <div class="cert-card" data-cert-title="Salesforce Developer with Agentblazer Champion Program"
+          data-cert-image="certificates/cert-salesforce.png">
+          <div class="cert-num c2">02</div>
+          <div class="cert-icon-big">☁️</div>
+          <div class="cert-type">Salesforce</div>
+          <h3>Salesforce Developer with Agentblazer Champion Program</h3><br><span class="cert-status"><i
+              class="fas fa-check-circle"></i> Certified</span>
+        </div>
+        <div class="cert-card" data-cert-title="MongoDB Basics for Students" data-cert-image="certificates/cert-mongodb.png">
+          <div class="cert-num c3">03</div>
+          <div class="cert-icon-big">🍃</div>
+          <div class="cert-type">MongoDB</div>
+          <h3>MongoDB Basics for Students</h3><br><span class="cert-status"><i class="fas fa-check-circle"></i>
+            Certified</span>
+        </div>
+        <div class="cert-card" data-cert-title="Deloitte Technology Job Simulation" data-cert-image="certificates/cert-deloitte.png">
+          <div class="cert-num c1">04</div>
+          <div class="cert-icon-big">💼</div>
+          <div class="cert-type">Deloitte</div>
+          <h3>Technology Job Simulation</h3><br><span class="cert-status"><i class="fas fa-check-circle"></i>
+            Certified</span>
+        </div>
+        <div class="cert-card" data-cert-title="NPTEL Cloud Computing" data-cert-image="NPTL%20certs/Cloud%20Computing.pdf">
+          <div class="cert-num c2">05</div>
+          <div class="cert-icon-big"><i class="fas fa-cloud"></i></div>
+          <div class="cert-type">NPTEL</div>
+          <h3>Cloud Computing</h3><br><span class="cert-status"><i class="fas fa-check-circle"></i>
+            Certified</span>
+        </div>
+        <div class="cert-card" data-cert-title="NPTEL IoT" data-cert-image="NPTL%20certs/IoT.pdf">
+          <div class="cert-num c3">06</div>
+          <div class="cert-icon-big"><i class="fas fa-wifi"></i></div>
+          <div class="cert-type">NPTEL</div>
+          <h3>IoT</h3><br><span class="cert-status"><i class="fas fa-check-circle"></i>
+            Certified</span>
+        </div>
+        <div class="cert-card" data-cert-title="NPTEL Programming In Java" data-cert-image="NPTL%20certs/Programming%20In%20Java.pdf">
+          <div class="cert-num c1">07</div>
+          <div class="cert-icon-big"><i class="fab fa-java"></i></div>
+          <div class="cert-type">NPTEL</div>
+          <h3>Programming In Java</h3><br><span class="cert-status"><i class="fas fa-check-circle"></i>
+            Certified</span>
+        </div>
+        <div style="flex-shrink:0;width:40px"></div>
+      </div>
+      <div class="cert-dots" id="cert-dots">
+        <div class="cert-dot active"></div>
+        <div class="cert-dot"></div>
+        <div class="cert-dot"></div>
+        <div class="cert-dot"></div>
+        <div class="cert-dot"></div>
+        <div class="cert-dot"></div>
+        <div class="cert-dot"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTERNSHIP CERTIFICATES -->
+  <section id="internship-certificates">
+    <div class="section-wrap" style="padding-top:2rem">
+      <div class="section-header" id="internship-cert-header">
+        <div class="section-tag">internships</div>
+        <h2 class="section-title">Internship <span>Certificates</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="cert-scroll-track internship-cert-track">
+        <div class="cert-card" data-cert-title="ServiceNow Virtual Internship Program"
+          data-cert-image="internship-certificates/internship-servicenow.png">
+          <div class="cert-num c1">01</div>
+          <div class="cert-icon-big">🚀</div>
+          <div class="cert-type">ServiceNow</div>
+          <h3>Virtual Internship Program</h3><br><span class="cert-status"><i class="fas fa-check-circle"></i>
+            Completed</span>
+        </div>
+        <div class="cert-card" data-cert-title="Salesforce Developer With Agentblazer Champion Program"
+          data-cert-image="internship-certificates/internship-salesforce.png">
+          <div class="cert-num c2">02</div>
+          <div class="cert-icon-big">☁️</div>
+          <div class="cert-type">Salesforce</div>
+          <h3>Salesforce Developer With Agentblazer Champion Program</h3><br><span class="cert-status"><i
+              class="fas fa-check-circle"></i> Completed</span>
+        </div>
+        <div class="cert-card" data-cert-title="Infosys Internship 6.0 HireHelper"
+          data-cert-image="internship-certificates/internship-infosys.png">
+          <div class="cert-num c3">03</div>
+          <div class="cert-icon-big">💼</div>
+          <div class="cert-type">Infosys</div>
+          <h3>Internship 6.0 HireHelper</h3><br><span class="cert-status"><i class="fas fa-check-circle"></i>
+            Completed</span>
+        </div>
+        <div style="flex-shrink:0;width:40px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="section-wrap">
+      <div class="section-header" id="contact-header">
+        <div class="section-tag">contact</div>
+        <h2 class="section-title">Let's <span>Connect</span></h2>
+        <div class="divider"></div>
+      </div>
+      <div class="hire-highlight">
+        <div class="hire-highlight-icon"><i class="fas fa-briefcase"></i></div>
+        <div>
+          <div class="hire-highlight-label">Open to Opportunities</div>
+          <p>I'm currently open to <strong>software developer, web developer, DevOps trainee, technical intern, and
+              fresher developer opportunities</strong>. Feel free to reach out!</p>
+        </div>
+      </div>
+      <div class="contact-grid">
+        <div>
+          <a href="tel:9092356332" class="contact-info-item" id="ci1">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <div class="contact-label">Phone</div>
+              <div class="contact-value">+91 9092356332</div>
+            </div>
+          </a>
+          <a href="mailto:kathiravan12082004@gmail.com" class="contact-info-item" id="ci2" style="transition-delay:.1s">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <div class="contact-label">Email</div>
+              <div class="contact-value">kathiravan12082004@gmail.com</div>
+            </div>
+          </a>
+          <div class="contact-info-item" id="ci3" style="transition-delay:.2s">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <div class="contact-label">Location</div>
+              <div class="contact-value">Ariyalur, Tamil Nadu, India</div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div
+            style="font-size:.75rem;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem">
+            Social Profiles</div>
+          <div class="social-grid">
+            <a href="https://github.com/kathiravan-sk" target="_blank" rel="noopener noreferrer" class="social-link" id="sl1"><i
+                class="fab fa-github"></i>
+              <div>
+                <div style="font-size:.65rem;color:var(--muted)">GitHub</div>
+                <div>kathiravan-sk</div>
+              </div>
+            </a>
+            <a href="https://linkedin.com/in/m-kathiravan-b67a30297" target="_blank" rel="noopener noreferrer" class="social-link" id="sl2"
+              style="transition-delay:.1s"><i class="fab fa-linkedin" style="color:#0a66c2"></i>
+              <div>
+                <div style="font-size:.65rem;color:var(--muted)">LinkedIn</div>
+                <div>m-kathiravan</div>
+              </div>
+            </a>
+            <a href="https://instagram.com/mr.mickey.12" target="_blank" rel="noopener noreferrer" class="social-link" id="sl3"
+              style="transition-delay:.2s"><i class="fab fa-instagram" style="color:#e1306c"></i>
+              <div>
+                <div style="font-size:.65rem;color:var(--muted)">Instagram</div>
+                <div>mr.mickey.12</div>
+              </div>
+            </a>
+            <a href="mailto:kathiravan12082004@gmail.com" class="social-link" id="sl4" style="transition-delay:.3s"><i
+                class="fas fa-envelope" style="color:#ea4335"></i>
+              <div>
+                <div style="font-size:.65rem;color:var(--muted)">Email</div>
+                <div>Gmail</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© 2026 Kathiravan M. All Rights Reserved.</footer>
+
+  <div class="cert-modal" id="cert-modal" aria-hidden="true">
+    <div class="cert-modal-backdrop" data-cert-close></div>
+    <div class="cert-modal-panel" role="dialog" aria-modal="true" aria-labelledby="cert-modal-title">
+      <button class="cert-modal-close" type="button" aria-label="Close certificate" data-cert-close>
+        <i class="fas fa-times"></i>
+      </button>
+      <div class="cert-modal-label">Certificate Preview</div>
+      <h3 id="cert-modal-title">Certificate</h3>
+      <div class="cert-preview-wrap">
+        <img src="" alt="" id="cert-modal-img">
+        <iframe src="" title="Certificate PDF preview" id="cert-modal-pdf" class="is-hidden"></iframe>
+        <div class="cert-preview-fallback" id="cert-preview-fallback">
+          <i class="fas fa-certificate"></i>
+          <strong id="cert-fallback-title">Certificate</strong>
+          <span>Place the certificate file in this folder to show the real preview.</span>
+        </div>
+      </div>
+      <div class="cert-file-name" id="cert-file-name"></div>
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
