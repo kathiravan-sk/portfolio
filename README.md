@@ -13,8 +13,8 @@ This project adds a professional personal AI assistant to the portfolio website.
 
 ## Folder structure
 - `index.html` – portfolio page
-- `index.css` – styling and assistant theme
-- `index.js` – frontend logic, voice input, keyboard behavior, local fallback
+- `css/index.css` – styling and assistant theme
+- `js/index.js` – frontend logic, voice input, keyboard behavior, local fallback
 - `server.js` – secure backend API and static hosting
 - `.env.example` – environment example
 - `package.json` – Node dependencies and scripts

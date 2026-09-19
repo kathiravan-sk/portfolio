@@ -1,6 +1,6 @@
 :root{--bg:#03070d;--bg2:#070e15;--bg3:#0d1720;--muted:#a3b5c3;--border:rgba(119,210,235,.18);--card:rgba(13,25,33,.62);--accent:#57e4f5;--accent2:#89b7f0;--accent3:#7be5b0;--glow:0 0 30px rgba(87,228,245,.12)}
 body{background:var(--bg);line-height:1.6}
-body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(3,7,13,.80),rgba(3,7,13,.78)),url('developer-workspace-hero.png') center/cover;translate:0 var(--landscape-y,0px);scale:1.06;pointer-events:none}
+body::before{content:'';position:fixed;inset:0;z-index:-1;background:linear-gradient(rgba(3,7,13,.80),rgba(3,7,13,.78)),url('../assets/images/backgrounds/developer-workspace-hero.png') center/cover;translate:0 var(--landscape-y,0px);scale:1.06;pointer-events:none}
 section{scroll-margin-top:90px}
 #about,#skills,#projects,#profile,#education,#certifications,#internship-certificates,#contact{background:transparent;border-top:1px solid rgba(119,210,235,.09)}
 .section-wrap{max-width:1200px;padding:5.5rem 3rem}
@@ -29,7 +29,7 @@ nav{background:rgba(3,9,14,.8);border-color:var(--border)}
 #projects{padding:0}
 #projects .section-wrap{max-width:1200px;padding:5.5rem 3rem}
 #projects .project-card::before{display:none}
-#projects .project-banner{height:160px;background:linear-gradient(rgba(3,12,20,.58),rgba(3,12,20,.66)),url('developer-workspace-hero.png') center/cover}
+#projects .project-banner{height:160px;background:linear-gradient(rgba(3,12,20,.58),rgba(3,12,20,.66)),url('../assets/images/backgrounds/developer-workspace-hero.png') center/cover}
 #projects .project-body h3{font-size:1.25rem}
 #projects .project-body{padding:1.5rem}
 #projects .project-scroll-track{touch-action:auto}
