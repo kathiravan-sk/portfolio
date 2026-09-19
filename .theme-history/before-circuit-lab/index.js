@@ -134,7 +134,7 @@ function setBubble(state,label,text){
   if(bubbleLabel) bubbleLabel.textContent=label;
   if(bubbleText) bubbleText.textContent=text;
   const ab=document.getElementById('about-speech');
-  if(ab && text && !ab.hasAttribute('data-rotating-caption')) ab.textContent=text.length>80?text.slice(0,80)+'…':text;
+  if(ab && text) ab.textContent=text.length>80?text.slice(0,80)+'…':text;
   const stateMap={idle:'', listening:'listening', thinking:'thinking', talking:'talking'};
   const bubble=document.getElementById('speech-bubble');
   if(bubble){
@@ -508,31 +508,23 @@ if(micBtn && SpeechRecognition){
 
 const aboutLines=[
   "I'm Kathiravan! Software and web developer.",
-  "Building responsive web apps with clean, thoughtful code.",
-  "Turning real-world problems into practical software solutions.",
-  "Learning new technologies and growing through every project.",
-  "Open to software development internships and placement opportunities."
+  "Open to software, web, and DevOps roles.",
+  "Internship exposure: ServiceNow, Salesforce, Infosys.",
+  "Built a Fire Fighting Robot project.",
+  "Focused on career-ready technical skills."
 ];
 let aI=0,aboutCycleStarted=false;
 function startAboutCycle(){
   if(aboutCycleStarted)return;
+  aboutCycleStarted=true;
   const el=document.getElementById('about-speech');
   if(!el)return;
-  aboutCycleStarted=true;
-  el.textContent=aboutLines[aI];
   setInterval(()=>{
-    if(document.hidden)return;
     aI=(aI+1)%aboutLines.length;
-    if(calmMotion.matches){
-      el.textContent=aboutLines[aI];
-      return;
-    }
-    el.classList.add('caption-fading');
-    setTimeout(()=>{
-      el.textContent=aboutLines[aI];
-      el.classList.remove('caption-fading');
-    },300);
-  },2000);
+    el.style.opacity='0';
+    setTimeout(()=>{el.textContent=aboutLines[aI];el.style.opacity='1'},300);
+    el.style.transition='opacity .3s';
+  },3000);
 }
 
 /* ══════════════════════════════════
